@@ -1,0 +1,46 @@
+:host {
+    display: flex;
+    justify-content: center;
+
+    form {
+        padding: 20pt;
+        display: flex;
+        flex-direction: column
+    }
+
+    .mat-form-field {
+        margin: 0% 0.3vw;
+    }
+
+    #email {
+        width: 220pt;
+    }
+
+    #title {
+        width: 62pt;
+    }
+
+    .phoneInput {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    .phone {
+        margin: 0px;
+    }
+
+    .Prefix {
+        width: 74pt;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        justify-content: space-evenly
+    }
+
+    hr {
+        width: 80%;
+    }
+}

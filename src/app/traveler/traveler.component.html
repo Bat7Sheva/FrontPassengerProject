@@ -1,0 +1,78 @@
+<form dir="rtl" [formGroup]="travelerForm">
+    <div formArrayName="traveler" *ngFor="let item of travelerForm.get('traveler')?.controls; let i = index;">
+        <div [formGroupName]="i">
+            <div>
+                <mat-form-field id="title" appearance="fill">
+                    <mat-label>תואר</mat-label>
+                    <mat-select required formControlName="title">
+                        <mat-option value={{element}} *ngFor="let element of titleOption">
+                            {{element}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>שדה חובה</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>שם פרטי באנגלית</mat-label>
+                    <input required matInput formControlName="firstName">
+                    <mat-error>שדה חובה</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>שם משפחה באנגלית</mat-label>
+                    <input required matInput formControlName="lastName">
+                    <mat-error>שדה חובה</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field id="email" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input required type="email" matInput formControlName="mailAdress">
+                    <mat-error>שדה חובה</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>תעודת זהות</mat-label>
+                    <input required matInput formControlName="identityCard">
+                    <mat-error>שדה חובה</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="phoneInput">
+                <mat-form-field class="phone Prefix" appearance="fill">
+                    <mat-label>קידומת</mat-label>
+                    <mat-select required formControlName="telephonePrefix">
+                        <mat-option value={{element}} *ngFor="let element of telephonePrefixOption">
+                            {{element}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>שדה חובה</mat-error>
+                </mat-form-field>
+                <mat-form-field class="phone" appearance="fill">
+                    <mat-label>מספר טלפון</mat-label>
+                    <input required required matInput formControlName="phon">
+                    <mat-error>שדה חובה</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button mat-stroked-button (click)="removetraveler(travelerForm.value.traveler,i)">
+                מחק<mat-icon>delete</mat-icon>
+            </button>
+        </div>
+        <hr />
+
+    </div>
+    <button *ngIf="!new" type="submit" mat-stroked-button color="primary"
+        (click)="onSubmit(travelerForm.value.traveler);">
+        הוסף <mat-icon> done </mat-icon>
+    </button>
+    <button *ngIf="new" type="submit" mat-stroked-button color="primary" (click)="addForm();">
+        נוסע נוסף <mat-icon> add </mat-icon>
+    </button>
+
+
+    <button mat-stroked-button color="primary" (click)="onSubmit(travelerForm.value.traveler);"> שמירה <mat-icon>save
+        </mat-icon>
+    </button>
+</form>
